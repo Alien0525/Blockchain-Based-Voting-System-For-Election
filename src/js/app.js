@@ -31,6 +31,7 @@ App = {
       App.contracts.Election.setProvider(App.web3Provider);
 
       App.listenForEvents();
+      App.listenForAccountChange()
       return App.render();
     });
   },
@@ -46,6 +47,13 @@ App = {
           App.render();
       });
     });
+  },
+
+  listenForAccountChange: function() {
+    ethereum.on('accountsChanged', function (accounts) {
+        App.account = accounts[0];
+        App.render();
+    })
   },
 
   // display the account connected to blockchain and list out the candidates in our election
@@ -66,32 +74,40 @@ App = {
     });
   
     // Load contract data
-    App.contracts.Election.deployed().then(function(instance) {
+    App.contracts.Election.deployed().then(function (instance) {
       electionInstance = instance;
       return electionInstance.candidatesCount();
-    }).then(function(candidatesCount) {
-      var candidatesResults = $("#candidatesResults");
-      candidatesResults.empty();
-  
-      var candidatesSelect = $('#candidatesSelect');
-      // candidatesSelect.empty();
+    }).then(function (candidatesCount) {
 
-
+      // Store all promised to get candidate info
+      const promises = [];
       for (var i = 1; i <= candidatesCount; i++) {
-        electionInstance.candidates(i).then(function(candidate) {
+        promises.push(electionInstance.candidates(i));
+      }
+
+      // Once all candidates are received, add to dom
+      Promise.all(promises).then((candidates) => {
+        var candidatesResults = $("#candidatesResults");
+        candidatesResults.empty();
+
+        var candidatesSelect = $('#candidatesSelect');
+        // candidatesSelect.empty();
+
+        candidates.forEach(candidate => {
           var id = candidate[0];
           var name = candidate[1];
           var voteCount = candidate[2];
-  
+
           // Render candidate Result
           var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
           candidatesResults.append(candidateTemplate);
-  
+
           // Render candidate ballot option
           var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
-          candidatesSelect.append(candidateOption);
-        });
-      }
+          candidatesSelect.append(candidateOption);          
+        })
+      });
+
       return electionInstance.voters(App.account);
     }).then(function(hasVoted) {
       // Do not allow a user to vote
