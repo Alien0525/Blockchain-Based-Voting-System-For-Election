@@ -16,12 +16,17 @@ contract Election {
         addCandidate("None Of The Above (NOTA)");
     }
 
+    event votedEvent (
+        uint indexed _candidateId
+    );
+
     mapping(uint => Candidate) public candidates ;
 
     uint public candidatesCount;
 
     // Store accounts that have voted
     mapping(address => bool) public voters;
+
     
     function addCandidate (string memory _name) private {
         candidatesCount ++;
@@ -41,6 +46,9 @@ contract Election {
 
         // update candidate vote Count
         candidates[_candidateId].voteCount++;
+
+        // trigger voted event
+        emit votedEvent(_candidateId);
     }
 
 
