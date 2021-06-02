@@ -17,7 +17,7 @@ Smart Contract Address : https://ropsten.etherscan.io/address/0x8b9CF007DbaC2508
 ![Screenshot (228)](https://user-images.githubusercontent.com/60143745/120531418-3dbe7900-c3fc-11eb-98dd-c90027d0c391.png)
 
 
-#### Vote permanently stored on blockchain ensuring the same voter can't cast vote again.
+#### Vote permanently stored on blockchain ensuring that the same voter can't cast vote again.
 
 ![Screenshot (229)](https://user-images.githubusercontent.com/60143745/120531894-be7d7500-c3fc-11eb-9b47-f4fbcc027b1b.png)
 ![Screenshot (230)](https://user-images.githubusercontent.com/60143745/120531876-b9202a80-c3fc-11eb-93f5-7dc77b000a7b.png)
