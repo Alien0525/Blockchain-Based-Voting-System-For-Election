@@ -31,7 +31,7 @@ App = {
       App.contracts.Election.setProvider(App.web3Provider);
 
       App.listenForEvents();
-      App.listenForAccountChange()
+      // App.listenForAccountChange();
       return App.render();
     });
   },
@@ -49,12 +49,12 @@ App = {
     });
   },
 
-  listenForAccountChange: function() {
-    ethereum.on('accountsChanged', function (accounts) {
-        App.account = accounts[0];
-        App.render();
-    })
-  },
+  // listenForAccountChange: function() {
+  //   ethereum.on('accountsChanged', function (accounts) {
+  //       App.account = accounts[0];
+  //       App.render();
+  //   })
+  // },
 
   // display the account connected to blockchain and list out the candidates in our election
   render: function() {
