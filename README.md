@@ -22,8 +22,9 @@ Smart Contract Address : https://ropsten.etherscan.io/address/0x8b9CF007DbaC2508
 ![Screenshot (229)](https://user-images.githubusercontent.com/60143745/120531894-be7d7500-c3fc-11eb-9b47-f4fbcc027b1b.png)
 ![Screenshot (230)](https://user-images.githubusercontent.com/60143745/120531876-b9202a80-c3fc-11eb-93f5-7dc77b000a7b.png)
 
+***
 
-## Blockchain can serve a unique role in preventing government corruption. Its technology offers a singular combination of permanent and tamper-evident record keeping, real-time transaction transparency and auditability, and automated smart contract functionality.
+#### Blockchain can serve a unique role in preventing government corruption. Its technology offers a singular combination of permanent and tamper-evident record keeping, real-time transaction transparency and auditability, and automated smart contract functionality.
 
 
 
